@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+main {
+    text-align: center;
+}
+
+section {
+    height: 200px;
+    width: 500px;
+    border: 1px red solid;
+    margin-left: 200px;
+}
+
+form {
+    position: absolute;
+    top: 50px;
+}
+
+footer{
+    position: absolute;
+    bottom: 50px;
+}
+
+span{
+    font-size: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+span:hover{
+    color: blue;
+}
