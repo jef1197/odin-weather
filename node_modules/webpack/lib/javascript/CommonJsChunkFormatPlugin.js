@@ -12,7 +12,10 @@ const {
 	getChunkFilenameTemplate,
 	getCompilationHooks
 } = require("./JavascriptModulesPlugin");
-const { generateEntryStartup } = require("./StartupHelpers");
+const {
+	generateEntryStartup,
+	updateHashForEntryStartup
+} = require("./StartupHelpers");
 
 /** @typedef {import("../Compiler")} Compiler */
 
@@ -28,9 +31,9 @@ class CommonJsChunkFormatPlugin {
 			compilation => {
 				compilation.hooks.additionalChunkRuntimeRequirements.tap(
 					"CommonJsChunkLoadingPlugin",
-					(chunk, set) => {
+					(chunk, set, { chunkGraph }) => {
 						if (chunk.hasRuntime()) return;
-						if (compilation.chunkGraph.getNumberOfEntryModules(chunk) > 0) {
+						if (chunkGraph.getNumberOfEntryModules(chunk) > 0) {
 							set.add(RuntimeGlobals.require);
 							set.add(RuntimeGlobals.startupEntrypoint);
 							set.add(RuntimeGlobals.externalInstallChunk);
@@ -48,9 +51,8 @@ class CommonJsChunkFormatPlugin {
 						source.add(`exports.modules = `);
 						source.add(modules);
 						source.add(";\n");
-						const runtimeModules = chunkGraph.getChunkRuntimeModulesInOrder(
-							chunk
-						);
+						const runtimeModules =
+							chunkGraph.getChunkRuntimeModulesInOrder(chunk);
 						if (runtimeModules.length > 0) {
 							source.add("exports.runtime =\n");
 							source.add(
@@ -156,6 +158,10 @@ class CommonJsChunkFormatPlugin {
 						if (chunk.hasRuntime()) return;
 						hash.update("CommonJsChunkFormatPlugin");
 						hash.update("1");
+						const entries = Array.from(
+							chunkGraph.getChunkEntryModulesWithChunkGroupIterable(chunk)
+						);
+						updateHashForEntryStartup(hash, chunkGraph, entries, chunk);
 					}
 				);
 			}
