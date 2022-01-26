@@ -35,15 +35,14 @@ async function getCity(city) {
         if (cityInfo.error) {
             alert(cityInfo.error.message);
         }
-        console.log(cityInfo);
+        console.log(cityInfo + "gay");
         displayWeather(cityInfo);
     } catch (error) {
-
+        console.error("error" + error);
     }
 }
 
 function displayWeather(data) {
-
     let city = data.location.name;
     let condition = data.current.condition.text;
     let conditionPNG = data.current.condition.icon;
@@ -58,6 +57,8 @@ function displayTemp(data){
     let humidity = data.current.humidity;
     let sunrise = data.forecast.forecastday[0].astro.sunrise;
     let sunset = data.forecast.forecastday[0].astro.sunset;
+    let chanceOfRain = data.forecast.forecastday[0].day.daily_chance_of_rain;
+    console.log(chanceOfRain)
     let temp = {
         c: data.current.temp_c,
         f: data.current.temp_f
@@ -88,13 +89,13 @@ function displayTemp(data){
             temph2.innerHTML = `${temp.c}&degC`;
             highLowP.innerHTML = `H:${highTemp.c}&degC | L:${lowTemp.c}&degC`;
             moreInfo.innerHTML = `Feels Like: ${feelsLike.c}&degC | Wind: ${windK.k} km/hr | Humidity: ${humidity}% |
-            Visibility: ${visibility.k} km <br> Sunrise: ${sunrise} | Sunset: ${sunset}`;
+            Visibility: ${visibility.k} km <br> Sunrise: ${sunrise} | Sunset: ${sunset} | Chance of rain: ${chanceOfRain}%`;
             break;
         case "F":
             temph2.innerHTML = `${temp.f}&degF`;
             highLowP.innerHTML = `H:${highTemp.f}&degF | L:${lowTemp.f}&degF`;
             moreInfo.innerHTML = `Feels Like: ${feelsLike.f}&degF | Wind: ${windK.m} m/hr | Humidity: ${humidity}% |
-            Visibility: ${visibility.m} miles <br> Sunrise: ${sunrise} | Sunset: ${sunset}`;
+            Visibility: ${visibility.m} miles <br> Sunrise: ${sunrise} | Sunset: ${sunset} | Chance of rain: ${chanceOfRain}%`;
     }
 }
 
