@@ -1,33 +1,52 @@
 const apiKey = '13cff259275e4dfe9a0155838211603';
-const cityName = document.querySelector('h1');
-const temph2 = document.querySelector('h2');
-const conditionh3 = document.querySelector('h3')
+
+const cityName = document.getElementById('cityName');
+const temphValue = document.getElementById('temp');
+const conditionhValue = document.getElementById('condition')
 const conditionimg = document.querySelector('img');
-const highLowP = document.getElementById('highLow');
+
+const tempHighValue = document.getElementById('tempHigh')
+const tempLowValue = document.getElementById('tempLow');
+const windValue = document.getElementById('wind');
+
 const moreInfo = document.getElementById('moreInfo');
+const feelsLikeValue = document.getElementById('feelsLike')
+const humidityValue = document.getElementById('humidity');
+const rainValue = document.getElementById('rain');
+
+const sunsetValue = document.getElementById('sunset')
+const sunriseValue = document.getElementById('sunrise');
+const visibilityValue = document.getElementById('visibility');
+
 const form = document.querySelector('form');
 const button = document.querySelector('button');
 const toggleC = document.getElementById('Cel');
 const toggleF = document.getElementById('Fah');
 
 let newCity = "toronto";
-let tempType = "F";
+let tempType = "C";
+toggleC.style.fontWeight = "700"
+toggleF.style.fontWeight = "300"
 
 form.addEventListener('submit', handlesubmit);
 button.addEventListener('click', handlesubmit);
 
 toggleC.addEventListener('click', function () {
     tempType = "C"
+    toggleC.style.fontWeight = "700"
+    toggleF.style.fontWeight = "300"
     getCity(newCity);
 });
 
 toggleF.addEventListener('click', function(){
     tempType = "F"
+    toggleC.style.fontWeight = "300"
+    toggleF.style.fontWeight = "700"
     getCity(newCity);
 });
 
 async function getCity(city) {
-    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=1`, {
+    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7`, {
         mode: 'cors'
     });
     try {
@@ -35,7 +54,7 @@ async function getCity(city) {
         if (cityInfo.error) {
             alert(cityInfo.error.message);
         }
-        console.log(cityInfo + "gay");
+        console.log(cityInfo);
         displayWeather(cityInfo);
     } catch (error) {
         console.error("error" + error);
@@ -49,7 +68,7 @@ function displayWeather(data) {
 
     displayTemp(data)
     cityName.innerHTML = city;
-    conditionh3.innerHTML = condition;
+    conditionhValue.innerHTML = condition;
     conditionimg.src = conditionPNG;
 }
 
@@ -58,7 +77,6 @@ function displayTemp(data){
     let sunrise = data.forecast.forecastday[0].astro.sunrise;
     let sunset = data.forecast.forecastday[0].astro.sunset;
     let chanceOfRain = data.forecast.forecastday[0].day.daily_chance_of_rain;
-    console.log(chanceOfRain)
     let temp = {
         c: data.current.temp_c,
         f: data.current.temp_f
@@ -73,7 +91,7 @@ function displayTemp(data){
     };
     let feelsLike = {
         c: data.current.feelslike_c,
-        f: data.current.feelslike_c
+        f: data.current.feelslike_f
     };
     let windK = {
         k: data.current.wind_kph,
@@ -86,16 +104,37 @@ function displayTemp(data){
 
     switch (tempType) {
         case "C":
-            temph2.innerHTML = `${temp.c}&degC`;
-            highLowP.innerHTML = `H:${highTemp.c}&degC | L:${lowTemp.c}&degC`;
-            moreInfo.innerHTML = `Feels Like: ${feelsLike.c}&degC | Wind: ${windK.k} km/hr | Humidity: ${humidity}% |
-            Visibility: ${visibility.k} km <br> Sunrise: ${sunrise} | Sunset: ${sunset} | Chance of rain: ${chanceOfRain}%`;
+            temphValue.innerHTML = `${temp.c}&degC`;
+
+            tempHighValue.innerHTML = `High: ${highTemp.c}&degC`;
+            tempLowValue.innerHTML = `Low: ${lowTemp.c}&degC`;
+            windValue.innerHTML = `Wind: ${windK.k} km/hr`;
+
+            feelsLikeValue.innerHTML = `${feelsLike.c}&degC`
+            humidityValue.innerHTML = `${humidity}%`
+            rainValue.innerHTML = `${chanceOfRain}%`
+
+            sunriseValue.innerHTML = sunrise
+            sunsetValue.innerHTML = sunset
+            visibilityValue.innerHTML = `${visibility.k} km `
+
             break;
         case "F":
-            temph2.innerHTML = `${temp.f}&degF`;
-            highLowP.innerHTML = `H:${highTemp.f}&degF | L:${lowTemp.f}&degF`;
-            moreInfo.innerHTML = `Feels Like: ${feelsLike.f}&degF | Wind: ${windK.m} m/hr | Humidity: ${humidity}% |
-            Visibility: ${visibility.m} miles <br> Sunrise: ${sunrise} | Sunset: ${sunset} | Chance of rain: ${chanceOfRain}%`;
+            temphValue.innerHTML = `${temp.f}&degF`;
+
+            tempHighValue.innerHTML = `High: ${highTemp.f}&degF`;
+            tempLowValue.innerHTML = `Low: ${lowTemp.f}&degF`;
+            windValue.innerHTML = `Wind: ${windK.m} mi/hr`;
+
+            feelsLikeValue.innerHTML = `${feelsLike.f}&degF`
+            humidityValue.innerHTML = `${humidity}%`
+            rainValue.innerHTML = `${chanceOfRain}%`
+
+            sunriseValue.innerHTML = sunrise
+            sunsetValue.innerHTML = sunset
+            visibilityValue.innerHTML = `${visibility.m} mi `
+
+            break;
     }
 }
 

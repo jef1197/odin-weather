@@ -8,27 +8,80 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
     </head>
     <body>
-        
+        <header>
+            <h1 class="title">Current Weather</h1>
+            <div class="switcher">
+                <span id="Cel">°C</span>
+                <span id="Fah">°F</span>
+            </div>
+
+        </header>
+
         <main>
-            <img src="" alt="">
-            <h1>Toronto</h1>
-            <h3>Sunny</h3>
-            <h2>Temperature</h2>
-            <p id="highLow"></p>
-            <p id="moreInfo"></p>
+            <section class="mainSection">
+                <div class="container">
+                    <div class="">
+                        <img id="imageCondition" src="" alt="">
+                        <p id="condition">Sunny</p>
+                        <p id="cityName">Toronto</p>
+                        <p id="temp">Temperature</p>
+                        
+                    </div>
+    
+                    <div class="topInfo">
+                        <h4 class="infoTop" id="tempHigh">High</h4>
+                        <h4 class="infoTop" id="tempLow">Low</h4>
+                        <h4 class="infoTop" id="wind">Wind</h4>
+                    </div>
+                </div>
+                <form>
+                    <input type="text" placeholder="Search City...">
+                    <button>Q</button>
+                </form>
+            </section>
+
+            <section class="moreInfo">
+            <!-- <p id="moreInfo"></p> -->
+                <div class="topRow">
+                    <div class="infoContainer">
+                        <p class="infoTitle">Feels Like</p>
+                        <p id="feelsLike" class="infoStatus">INFO 18px</p>
+                    </div>
+
+                    <div class="infoContainer">
+                        <p class="infoTitle">Humidity</p>
+                        <p id="humidity" class="infoStatus">INFO 18px</p>
+                    </div>
+
+                    <div class="infoContainer">
+                        <p class="infoTitle">Rain</p>
+                        <p id="rain" class="infoStatus">INFO 18px</p>
+                    </div>
+                </div>
+                <div class="botRow">
+                    <div class="infoContainer">
+                        <p class="infoTitle">Sunrise</p>
+                        <p id="sunrise" class="infoStatus">INFO 18px</p>
+                    </div>
+
+                    <div class="infoContainer">
+                        <p class="infoTitle">Sunset</p>
+                        <p id="sunset" class="infoStatus">INFO 18px</p>
+                    </div>
+                    
+                    <div class="infoContainer">
+                        <p class="infoTitle">Visibility</p>
+                        <p id="visibility" class="infoStatus">INFO 18px</p>
+                    </div>
+                </div>
+            </section>
         </main>
-
-        <form>
-            <input type="text" placeholder="Enter CityName">
-            <button>Search</button>
-        </form>
-
-        <footer>
-            <span id="Cel">c</span>
-            <span id="Fah">f</span>
-        </footer>
         <script src="main.js" ></script>
+        <!-- <script src="/src/index.js"></script> -->
     </body>
 </html>
