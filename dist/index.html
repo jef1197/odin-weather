@@ -11,75 +11,75 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="bulma.css">
     </head>
     <body>
-        <header>
-            <h1 class="title">Current Weather</h1>
-            <div class="switcher">
+        <div class="bodyBg"></div>
+        <main class='columns is-multiline is-centered'>
+            <section class="column is-half box bg p-5 mt-6">
+                <div class="columns is-centered ">
+                    <h1 class="column is-full title has-text-white is-size-1 is-flex is-justify-content-center " id="cityName">Current Weather</h1>
+                </div>
+                <div class="columns is-centered ">
+                    <div class="column is-4 content has-text-centered">
+                        <img id="imageCondition" src="" alt="">
+                        <p class="title has-text-white is-size-4" id="condition">Sunny</p>
+                        <p class="title has-text-white is-size-2 " id="temp">Temperature</p>
+                    </div>
+    
+                    <div class="column is-4 content is-flex is-flex-direction-column is-justify-content-center is-align-content-center">
+                        <h4 class="is-size-5 has-text-white" id="tempHigh">High</h4>
+                        <h4 class="is-size-5 has-text-white" id="tempLow">Low</h4>
+                        <h4 class="is-size- has-text-white" id="wind">Wind</h4>
+                    </div>
+                </div>
+                <div class=" columns is-centered">
+                    <form >
+                        <input type="text" placeholder="Search City...">
+                        <button>Q</button>
+                    </form>
+                </div>
+
+            </section>
+
+            <section class="column is-full">
+                <div class="columns is-desktop is-centered">
+                    <div class="column is-2 box bg mb-3 ml-3 mr-3 pb-6  has-text-centered">
+                        <p class="title is-size-5 has-text-white is-spaced mt-2">Feels Like</p>
+                        <p id="feelsLike" class="subtitle has-text-white is-size-4">INFO 18px</p>
+                    </div>
+
+                    <div class="column is-2 box bg mb-3 ml-3 mr-3 has-text-centered has-text-centered">
+                        <p class="title is-size-5 has-text-white is-spaced mt-2">Humidity</p>
+                        <p id="humidity" class="subtitle has-text-white is-size-4">INFO 18px</p>
+                    </div>
+
+                    <div class="column is-2 box bg mb-3 ml-3 mr-3 has-text-centered has-text-centered">
+                        <p class="title is-size-5 has-text-white is-spaced mt-2">Rain</p>
+                        <p id="rain" class="subtitle has-text-white is-size-4">INFO 18px</p>
+                    </div>
+                </div>
+                <div class="columns is-desktop  mt-3 is-centered">
+                    <div class="column is-2 is-two-thirds-tablet box bg  mb-3 ml-3 mr-3 pb-6 has-text-centered">
+                        <p class="title is-size-5 has-text-white is-spaced mt-2">Sunrise</p>
+                        <p id="sunrise" class="subtitle has-text-white is-size-4">INFO 18px</p>
+                    </div>
+
+                    <div class="column is-2 is-two-thirds-tablet box bg mb-3 ml-3 mr-3 pb-6 has-text-centered">
+                        <p class="title is-size-5 has-text-white is-spaced mt-2">Sunset</p>
+                        <p id="sunset" class="subtitle has-text-white is-size-4">INFO 18px</p>
+                    </div>
+                    
+                    <div class="column is-2 is-two-thirds-tablet box bg mb-3 ml-3 mr-3 pb-6 has-text-centered">
+                        <p class="title is-size-5 has-text-white is-spaced mt-2">Visibility</p>
+                        <p id="visibility" class="subtitle has-text-white is-size-4">INFO 18px</p>
+                    </div>
+                </div>
+            </section>
+            <div class=" switcher column has-text-centered is-3 mt-6">
                 <span id="Cel">°C</span>
                 <span id="Fah">°F</span>
             </div>
-
-        </header>
-
-        <main>
-            <section class="mainSection">
-                <div class="container">
-                    <div class="">
-                        <img id="imageCondition" src="" alt="">
-                        <p id="condition">Sunny</p>
-                        <p id="cityName">Toronto</p>
-                        <p id="temp">Temperature</p>
-                        
-                    </div>
-    
-                    <div class="topInfo">
-                        <h4 class="infoTop" id="tempHigh">High</h4>
-                        <h4 class="infoTop" id="tempLow">Low</h4>
-                        <h4 class="infoTop" id="wind">Wind</h4>
-                    </div>
-                </div>
-                <form>
-                    <input type="text" placeholder="Search City...">
-                    <button>Q</button>
-                </form>
-            </section>
-
-            <section class="moreInfo">
-            <!-- <p id="moreInfo"></p> -->
-                <div class="topRow">
-                    <div class="infoContainer">
-                        <p class="infoTitle">Feels Like</p>
-                        <p id="feelsLike" class="infoStatus">INFO 18px</p>
-                    </div>
-
-                    <div class="infoContainer">
-                        <p class="infoTitle">Humidity</p>
-                        <p id="humidity" class="infoStatus">INFO 18px</p>
-                    </div>
-
-                    <div class="infoContainer">
-                        <p class="infoTitle">Rain</p>
-                        <p id="rain" class="infoStatus">INFO 18px</p>
-                    </div>
-                </div>
-                <div class="botRow">
-                    <div class="infoContainer">
-                        <p class="infoTitle">Sunrise</p>
-                        <p id="sunrise" class="infoStatus">INFO 18px</p>
-                    </div>
-
-                    <div class="infoContainer">
-                        <p class="infoTitle">Sunset</p>
-                        <p id="sunset" class="infoStatus">INFO 18px</p>
-                    </div>
-                    
-                    <div class="infoContainer">
-                        <p class="infoTitle">Visibility</p>
-                        <p id="visibility" class="infoStatus">INFO 18px</p>
-                    </div>
-                </div>
-            </section>
         </main>
         <script src="main.js" ></script>
         <!-- <script src="/src/index.js"></script> -->

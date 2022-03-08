@@ -46,7 +46,7 @@ toggleF.addEventListener('click', function(){
 });
 
 async function getCity(city) {
-    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7`, {
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7`, {
         mode: 'cors'
     });
     try {
@@ -54,7 +54,6 @@ async function getCity(city) {
         if (cityInfo.error) {
             alert(cityInfo.error.message);
         }
-        console.log(cityInfo);
         displayWeather(cityInfo);
     } catch (error) {
         console.error("error" + error);
@@ -62,7 +61,7 @@ async function getCity(city) {
 }
 
 function displayWeather(data) {
-    let city = data.location.name;
+    let city = data.location.name +" Weather";
     let condition = data.current.condition.text;
     let conditionPNG = data.current.condition.icon;
 
@@ -106,9 +105,9 @@ function displayTemp(data){
         case "C":
             temphValue.innerHTML = `${temp.c}&degC`;
 
-            tempHighValue.innerHTML = `High: ${highTemp.c}&degC`;
-            tempLowValue.innerHTML = `Low: ${lowTemp.c}&degC`;
-            windValue.innerHTML = `Wind: ${windK.k} km/hr`;
+            tempHighValue.innerHTML = `<b>High: </b> ${highTemp.c}&degC`;
+            tempLowValue.innerHTML = `<b>Low: </b> ${lowTemp.c}&degC`;
+            windValue.innerHTML = `<b>Wind: </b> ${windK.k} km/hr`;
 
             feelsLikeValue.innerHTML = `${feelsLike.c}&degC`
             humidityValue.innerHTML = `${humidity}%`
@@ -122,9 +121,9 @@ function displayTemp(data){
         case "F":
             temphValue.innerHTML = `${temp.f}&degF`;
 
-            tempHighValue.innerHTML = `High: ${highTemp.f}&degF`;
-            tempLowValue.innerHTML = `Low: ${lowTemp.f}&degF`;
-            windValue.innerHTML = `Wind: ${windK.m} mi/hr`;
+            tempHighValue.innerHTML = `<b>High: </b> ${highTemp.f}&degF`;
+            tempLowValue.innerHTML = `<b>Low: </b> ${lowTemp.f}&degF`;
+            windValue.innerHTML = `<b>Wind: </b> ${windK.m} mi/hr`;
 
             feelsLikeValue.innerHTML = `${feelsLike.f}&degF`
             humidityValue.innerHTML = `${humidity}%`
@@ -142,9 +141,15 @@ function displayTemp(data){
 function handlesubmit(e) {
     e.preventDefault();
     const input = document.querySelector('input[type="text"]')
-    newCity = input.value;
-    getCity(newCity);
-    form.reset();
+
+    if(input.value){
+        newCity = input.value;
+        getCity(newCity);
+        form.reset();
+    }else {
+        alert("Please Enter a City Name")
+    }
+
 }
 
 window.onload = getCity(newCity);

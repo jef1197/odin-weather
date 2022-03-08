@@ -6,129 +6,25 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+.bodyBg{
     height: 100vh;
     width: 100vw;
-    padding: 20px;
+    /* padding: 20px; */
     background-image: url("img/background.png");
-    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+        position: fixed;    
+    z-index: -1;
 }
 
-header{
-    text-align: center;
-    display: flex;
-    justify-content: center;
+.bg {
+    background: #0000009f !important;
 }
 
-header h1 {
-    font-size: 48px;
-    letter-spacing: 3px;
-    font-style: bold;
-}
-
-header div{ 
-    position: fixed;
-    right: 20px;
+.switcher {
     background: #ffffff79;
     border-radius: 10px;
-}
-
-header span {
-    font-weight: 500;
-}
-
-main {
-    text-align: center;
-
-}
-
-.mainSection{
-    background: #0000007e;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    width: 50vw;
-    margin: auto;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    padding: 20px;
-    padding-bottom: 40px;
-}
-
-.container {
-
-    display: flex;
-    justify-content: space-evenly;
-}
-
-
-#condition {
-    display: inline-block;
-    font-size: 30px;
-}
-
-#cityName {
-    font-size: 24px;
-}
-
-#temp {
-    font-size: 36px;
-
-}
-
-.topInfo {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.infoTop {
-    font-weight: 200;
-    font-size: 24px ;
-    text-align: left;
-}
-
-form {
-    margin-top: 1rem;
-    height: 30px;
-    max-width: 200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #f5f5f5;
-    padding: 6px 12px;
-    margin: auto;
-    margin-top: 20px;
-}
-
-input {
-    padding: 5px;
-    background: transparent;
-    border: none;
-    /* border-bottom: 5px white solid; */
-    color:  #f5f5f5;
-}
-
-input:focus {
-    outline: none;
-}
-
-button{
-    height: 18px;
-    min-width: 18px;
-    /* background-image: url(./imgs/search-icon.afa8a86….png); */
-    background-size: contain;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    color: white;
-}
-
-::placeholder {
-    color: white;
 }
 
 span{
@@ -146,38 +42,40 @@ span:active {
     color: blue;
 }
 
-.moreInfo {
-    /* background: #0000007e;
-    color: white; */
-    width: 50vw;
-    margin: auto;
-
-    padding-bottom: 40px;
-}
-
-.topRow {
+form {
+    margin-top: 1rem;
+    height: 30px;
     display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f5f5f5;
+    padding: 6px 12px;
 }
 
-.botRow{
-    display: flex;
-    justify-content: space-evenly;
+
+input {
+    padding: 5px;
+    background: transparent;
+    border: none;
+    color:  #f5f5f5;
 }
 
-.infoContainer {
-    background: #0000009f;
+input:focus {
+    outline: none;
+}
+
+button{
+    height: 18px;
+    min-width: 18px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
     color: white;
-    width: 25%;
-    height: 120px;
 }
 
-.infoTitle {
-    font-size: 18px;
+::placeholder {
+    color: white;
 }
 
-.infoStatus {
-    font-size: 30px;
-    margin-top: 15px;
-}
